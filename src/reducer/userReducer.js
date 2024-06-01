@@ -13,14 +13,16 @@ function userReducer(state = initialState, action) {
       case types.LOGIN_REQUEST:
         return{
           ...state,
-          loading:true
+          loading:true,
+          error: null, // 요청 시 오류 초기화
         } //Request 
 
     case types.LOGIN_SUCCESS:
         return{
           ...state,
           loading:false,
-          user: payload.user
+          user: payload.user,
+          error: null, // 성공 시 오류 초기화
         } //Success
 
     case types.REGISTER_USER_FAIL:
