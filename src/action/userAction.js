@@ -15,6 +15,7 @@ const loginWithEmail =
           throw new Error(response.data.message) //catch에서 에러 잡음
       
         dispatch({ type: types.LOGIN_SUCCESS, payload: response.data });
+        sessionStorage.setItem("token", response.data.token)
 
       } catch (error) {
         dispatch({ type: types.LOGIN_FAIL, payload: error.message })
