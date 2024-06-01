@@ -2,7 +2,7 @@ import * as types from "../constants/user.constants";
 const initialState = {
   loading:false,
   user:null,
-  error: "",
+  error: null,
 
 };
 
@@ -38,7 +38,7 @@ function userReducer(state = initialState, action) {
           ...state,
           error: null,
         };
-        
+
     default:
         return state;
   }
