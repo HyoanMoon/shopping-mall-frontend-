@@ -1,9 +1,73 @@
 import * as types from "../constants/user.constants";
-const initialState = {};
+const initialState = {
+  loading:false,
+  user:null,
+  error: "",
+
+};
 
 function userReducer(state = initialState, action) {
   const { type, payload } = action;
-  return state;
-}
+  switch(type){
+    case types.REGISTER_USER_REQUEST:
+      case types.LOGIN_REQUEST:
+        return{
+          ...state,
+          loading:true
+        } //Request 
 
+    case types.LOGIN_SUCCESS:
+        return{
+          ...state,
+          loading:false,
+          user: payload.user
+        } //Success
+
+    case types.REGISTER_USER_FAIL:
+      case types.LOGIN_FAIL:
+        return{
+          ...state,
+          loading:false,
+          error: payload
+        } //Fail
+
+    case 'CLEAR_ERROR': 
+        return {
+          ...state,
+          error: null,
+        };
+        
+    default:
+        return state;
+  }
+}
 export default userReducer;
+
+
+
+
+// import * as types from "../constants/user.constants";
+// const initialState = {
+//   error: null,
+// };
+
+// const userReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case types.REGISTER_USER_FAIL:
+//       return {
+//         ...state,
+//         error: action.payload,
+//       };
+//     case types.REGISTER_USER_SUCCESS:
+//       return {
+//         ...state,
+//         error: null,
+//       };
+//     // 기타 케이스...
+//     default:
+//       return state;
+//   }
+// };
+
+// export default userReducer;
+
