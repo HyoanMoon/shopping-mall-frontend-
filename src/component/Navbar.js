@@ -76,7 +76,7 @@ const Navbar = ({ user }) => {
               <FontAwesomeIcon className="search-icon" icon={faSearch} />
               <input
                 type="text"
-                placeholder="제품검색"
+                placeholder="Search"
                 onKeyPress={onCheckEnter}
                 defaultValue={searchQuery.name}
               />
@@ -123,21 +123,21 @@ const Navbar = ({ user }) => {
               <div onClick={logout} className="nav-icon">
                 <FontAwesomeIcon icon={faUser} />
                 {!isMobile && (
-                  <span style={{ cursor: "pointer" }}>로그아웃</span>
+                  <span style={{ cursor: "pointer" }}>Sign out</span>
                 )}
               </div>
             ) : (
               <div onClick={() => navigate("/login")} className="nav-icon">
                 <FontAwesomeIcon icon={faUser} />
                 {!isMobile && (
-                  <span style={{ cursor: "pointer" }}>로그인</span>
+                  <span style={{ cursor: "pointer" }}>Sign in</span>
                 )}
               </div>
             )}
             <div onClick={() => navigate("/cart")} className="nav-icon">
               <FontAwesomeIcon icon={faShoppingBag} />
               {!isMobile && (
-                <span style={{ cursor: "pointer" }}>{`쇼핑백(${
+                <span style={{ cursor: "pointer" }}>{`Cart(${
                   cartItemCount || 0
                 })`}</span>
               )}
@@ -145,7 +145,7 @@ const Navbar = ({ user }) => {
             <div onClick={handleMyOrders} className="nav-icon">
               <FontAwesomeIcon icon={faBox} />
               {!isMobile && (
-                <span style={{ cursor: "pointer" }}>내 주문</span>
+                <span style={{ cursor: "pointer" }}>My orders</span>
               )}
             </div>
             {isMobile && (
@@ -181,7 +181,7 @@ const Navbar = ({ user }) => {
             <FontAwesomeIcon icon={faSearch} />
             <input
               type="text"
-              placeholder="제품검색"
+              placeholder="Search"
               onKeyPress={onCheckEnter}
               defaultValue={searchQuery.name}
             />

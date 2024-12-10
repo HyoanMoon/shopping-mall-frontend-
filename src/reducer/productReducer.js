@@ -1,67 +1,67 @@
 import * as types from "../constants/product.constants";
 import ProductDetail from "../page/ProductDetail";
 const initialState = {
-  loading:false,
-  error:"",
-  productList:[],
+  loading: false,
+  error: "",
+  productList: [],
   totalPageNum: 1,
-  selectedProduct:null,
-  productDetail:[]
+  selectedProduct: null,
+  productDetail: [],
 };
 
 function productReducer(state = initialState, action) {
   const { type, payload } = action;
-  switch(type){
+  switch (type) {
     case types.PRODUCT_CREATE_REQUEST:
-      case types.PRODUCT_GET_REQUEST:
-        case types.PRODUCT_EDIT_REQUEST:
-          case types.PRODUCT_DELETE_REQUEST:
-            case types.GET_PRODUCT_DETAIL_REQUEST:
+    case types.PRODUCT_GET_REQUEST:
+    case types.PRODUCT_EDIT_REQUEST:
+    case types.PRODUCT_DELETE_REQUEST:
+    case types.GET_PRODUCT_DETAIL_REQUEST:
       return {
         ...state,
-        loading :true,
-      }
+        loading: true,
+      };
     case types.PRODUCT_CREATE_SUCCESS:
-      case types.PRODUCT_EDIT_SUCCESS:
-        case types.PRODUCT_DELETE_SUCCESS:
+    case types.PRODUCT_EDIT_SUCCESS:
+    case types.PRODUCT_DELETE_SUCCESS:
       return {
         ...state,
-        loading :false,
-        error: ""
-      }
+        loading: false,
+        error: "",
+      };
     case types.PRODUCT_GET_SUCCESS:
-      return{
+      return {
         ...state,
-        loading :false,
+        loading: false,
         error: "",
         productList: payload.data,
-        totalPageNum: payload.totalPageNum
-      }
+        totalPageNum: payload.totalPageNum,
+      };
     case types.GET_PRODUCT_DETAIL_SUCCESS:
-      return{
+      return {
         ...state,
-        loading :false,
+        loading: false,
         error: "",
-        productDetail: payload
-      }
+        productDetail: payload,
+      };
     case types.PRODUCT_CREATE_FAIL:
-      case types. PRODUCT_GET_FAIL:
-        case types.PRODUCT_EDIT_FAIL:
-          case types.PRODUCT_DELETE_FAIL:
-            case types.GET_PRODUCT_DETAIL_FAIL:
-      return{
+    case types.PRODUCT_GET_FAIL:
+    case types.PRODUCT_EDIT_FAIL:
+    case types.PRODUCT_DELETE_FAIL:
+    case types.GET_PRODUCT_DETAIL_FAIL:
+      return {
         ...state,
-        loading :false,
-        error: payload
-      }
+        loading: false,
+        error: payload,
+      };
     case types.SET_SELECTED_PRODUCT:
-      return{
+      return {
         ...state,
-        selectedProduct :payload,
-      }
+        selectedProduct: payload,
+      };
 
-      default:
-        return state;
+    default:
+      return state;
   }
 }
 

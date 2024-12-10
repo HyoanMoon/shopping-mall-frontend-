@@ -18,13 +18,14 @@ const CartProductCard = ({ item }) => {
     //아이템을 지운다
     dispatch(cartActions.deleteCartItem(id, qty));
   };
-  const stockInfo = Object.keys(item.productId.stock).map(size => {
+  const stockInfo = Object.keys(item.productId.stock).map((size) => {
     const stockCount = item.productId.stock[size];
-    const stockAlert = stockCount <= 5 && stockCount > 0 ? `${stockCount} items left` : '';
+    const stockAlert =
+      stockCount <= 5 && stockCount > 0 ? `${stockCount} items left` : "";
     return {
       size,
       stockCount,
-      stockAlert
+      stockAlert,
     };
   });
 
@@ -32,10 +33,7 @@ const CartProductCard = ({ item }) => {
     <div className="product-card-cart">
       <Row>
         <Col md={2} xs={12}>
-          <img
-            src={item.productId.image}
-            width={112}
-          />
+          <img src={item.productId.image} width={112} />
         </Col>
         <Col md={10} xs={12}>
           <div className="display-flex space-between">
@@ -54,20 +52,23 @@ const CartProductCard = ({ item }) => {
           </div>
           <div>Size: {item.size.toUpperCase()}</div>
 
-          {stockInfo.map(info => (
-            info.size.toUpperCase() === item.size.toUpperCase() && info.stockAlert && (
-              <div key={info.size} className="warning-message">
-              {info.stockAlert}
-              </div> 
-            )
-          ))}
-          
+          {stockInfo.map(
+            (info) =>
+              info.size.toUpperCase() === item.size.toUpperCase() &&
+              info.stockAlert && (
+                <div key={info.size} className="warning-message">
+                  {info.stockAlert}
+                </div>
+              )
+          )}
 
           <div>Total: ₩ {currencyFormat(item.productId.price * item.qty)} </div>
           <div>
             Quantity:
             <Form.Select
-              onChange={(event) => handleQtyChange(item._id, event.target.value)}
+              onChange={(event) =>
+                handleQtyChange(item._id, event.target.value)
+              }
               required
               defaultValue={item.qty}
               className="qty-dropdown"
